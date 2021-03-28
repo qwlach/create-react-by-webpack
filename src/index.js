@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import ReactDom from 'react-dom';
-import Utils from "@Utils";
+import { Provider } from 'react-redux';
+import { createStore } from './store';
+import App from './App';
 
-// const ele = React.createElement('div', { title: '我是div' }, '我是div')
-function App() {
-  const [status, setStatus] = useState(true);
-  Utils.testDemo();
+const Root = () => {
   return (
-    <div>
-      我是hooks
-    </div>
+    <Provider store={createStore()}>
+      <App />
+    </Provider>
   )
 }
 
-ReactDom.render(<App />, document.querySelector('#root'));
+ReactDom.render(<Root />, document.querySelector('#root'));

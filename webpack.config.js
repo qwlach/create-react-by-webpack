@@ -1,8 +1,11 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env) => {
+  console.log(env, 1111111111)
   return {
+    // mode: 'production',
     mode: 'development',
     devtool: 'inline-source-map',
     entry: {
@@ -18,9 +21,15 @@ module.exports = (env) => {
       }
     },
     devServer: {
-      port: 3111,
+      stats: "minimal",
+      hot: true,
+      historyApiFallback: true,
+      port: 3002,
+      host: "127.0.0.1",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
       open: 'Google Chrome',
-      hot: true
     },
     module: {
       rules: [
@@ -38,7 +47,7 @@ module.exports = (env) => {
                   "@babel/preset-env",
                   {
                     "useBuiltIns": "usage", // entry时会将所有的polyfill全部引入
-                    // "debug": true
+                    "corejs": 3,
                   }
                 ],
                 '@babel/preset-react'
@@ -60,9 +69,28 @@ module.exports = (env) => {
       ]
     },
     plugins: [
+      new CleanWebpackPlugin(),
       new htmlWebpackPlugin({
-        template: 'dist/index.html'
-      })
-    ]
+        template: 'public/index.html',
+        inject: "body",
+      }),
+      
+    ],
+    optimization: {
+      splitChunks: {
+        // include all types of chunks
+        chunks: 'all',
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            minSize: 30000,
+            minChunks: 1,
+            chunks: 'initial',
+            priority: 1 // 该配置项是设置处理的优先级，数值越大越优先处理
+          },
+        }
+      }
+    }
   };
 }
