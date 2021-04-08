@@ -12,7 +12,8 @@ module.exports = (env) => {
       home: './src/index.js'
     },
     output: {
-      path: path.resolve(__dirname, 'dist')
+      path: path.resolve(__dirname, 'dist'),
+      publicPath: '/'
     },
     resolve: {
       extensions: ['.js', '.jsx'],
