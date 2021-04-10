@@ -4,6 +4,9 @@ module.exports = {
   entry: {
     home: './src/index.js'
   },
+  performance: {
+    hints: false
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
