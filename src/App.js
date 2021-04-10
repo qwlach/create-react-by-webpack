@@ -6,6 +6,7 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import { Button } from 'antd';
 import { loadBridge } from './store';
 
 class App extends PureComponent {
@@ -43,6 +44,7 @@ class App extends PureComponent {
                 </li>
               </ul>
             </nav>
+            <Button type="primary">1111qq11</Button>
             <Switch>
               <Route path="/" exact component={Home} />
                 
