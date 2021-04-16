@@ -1,7 +1,3 @@
-function testDemo () {
-  console.log(222)
-}
-
-export default {
-  testDemo,
+export const getProjectPrefix = () => {
+  return 'qiweilong';
 }

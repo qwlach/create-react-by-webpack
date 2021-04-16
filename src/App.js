@@ -7,7 +7,9 @@ import {
   useParams
 } from "react-router-dom";
 import { Button } from 'antd';
+import classNames from 'classnames';
 import { loadBridge } from './store';
+import './index.less';
 
 class App extends PureComponent {
 
@@ -26,6 +28,10 @@ class App extends PureComponent {
   render() {
     const { value } = this.props;
     console.log(value)
+    var btnClass = classNames({
+      'qiweilong': true,
+      'testColor': true,
+    });
     return (
       <>
         <div onClick={this.handleChange}>{value}</div>
@@ -44,7 +50,7 @@ class App extends PureComponent {
                 </li>
               </ul>
             </nav>
-            <Button type="primary">1111qq11</Button>
+            <Button type="primary" className={btnClass}>1111qq11</Button>
             <Switch>
               <Route path="/" exact component={Home} />
                 
