@@ -2,9 +2,28 @@
 
 
 .@{prefix} {
-  color: red;
-}
+  &-header {
+    height: 64px;
+    color: #fff;
 
-.testColor {
-  font-size: 16px;
+    background-color:  rgba(0, 0, 0, 0.85);
+  }
+  &-container {
+    overflow: hidden;
+    height: calc(100vh - 64px);
+    .leftContainer {
+      float: left;
+      width: 220px;
+      height: inherit;
+      // background-color: rgba(0, 0, 0, 0.85);
+      background-color: #fff;
+    }
+    .rightContainer {
+      float: right;
+      height: inherit;
+      background-color: #f0f2f5;
+      padding: 20px;
+      width: calc(100vw - 220px);
+    }
+  }
 }
