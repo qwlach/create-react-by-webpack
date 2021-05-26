@@ -8,7 +8,7 @@ class Home extends PureComponent {
   render() {
     return (
       <Button>
-        Home
+        Home 我是测试加的分支
       </Button>
     )
   }
